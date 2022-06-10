@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Antic+Slab&family=Koulen&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Antic+Slab&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/style.css" />
+    <title>Hello</title>
+   <style> 
+   h1 {text-align: center;}  
+
+table {text-align: center;}
+
+table {
+
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+    border-collapse: collapse;
+
+    width: 100%;
+
+}
+
+td, th {
+
+    border: 5px solid #dddd;
+
+    text-align: left;
+
+    padding: 10px;
+
+}
+
+
+
+body {
+
+    height: 1000px;
+
+ 
+
+   background: linear-gradient(to bottom, #f7faf9 5%, #30ee9c 80%)
+
+   
+
+}
+</style> 
+  </head>
+  <body>
+    <header>
+      <nav>
+        <ul>
+          <li>
+            <a href="http://localhost:8080/h2-console" class="btn nav"
+              >H2 Console</a
+            >
+          </li>
+        </ul>
+      </nav>
+      <div class="title" style="margin: auto">
+        <h1 id="title1">Welcome to</h1>
+        <h1 id="title2">My Car Website!</h1>
+    
+     </div>
+    </header>
+
+    <main id="main" style="display: flex">
+      <section
+        id="no-items-message"
+        style="width: 250px; height: 300px; text-align: center"
+      >
+        <p>You need to create an entry to read from the database.</p>
+        <img src="./img/404.png" width = 250px>
+      </section>
+      <!-- Read all cars -->
+
+      <section id="read-container">
+        <!-- <p style="display: inline; width: auto">All cars:</p> -->
+
+        <div id="read-all-container">
+          <select
+            id="read-all-select"
+            onchange="activateReadBy()"
+            style="margin-bottom: 6px"
+          >
+            <option value="read-all" selected>Read all cars</option>
+            <option value="read-by">Read cars by</option>
+          </select>
+        </div>
+
+        <div id="read-by-container">
+          <!-- Read all/by select box -->
+          <select id="read-by-select" onchange="activateReadAll()">
+            <option value="read-all">Read all cars</option>
+            <option value="read-by" selected>Read cars by</option>
+          </select>
+
+          <!-- read by select box -->
+          <select id="main-options" name="read-by" onchange="changeDatalist()">
+            <option value="id">ID</option>
+            <option value="make">Make</option>
+            <option value="model">Model</option>
+            <!-- <option value="cost">Price</option> -->
+          </select>
+          <br />
+
+          <div id="datalist-container">
+            <input
+              list="sub-options"
+              id="sub-options-value"
+              class="text-input"
+              size="10"
+              placeholder="Start typing..."
+              onclick="clearInput()"
+            />
+            <datalist id="sub-options"></datalist>
+            <button class="btn" onclick="readBy();">Search cars</button>
+          </div>
+        </div>
+
+        <!-- Car table container div  -->
+        <div class="car-table-container" id="all-cars">
+          <table>
+            <thead class="table-header">
+              <tr>
+                <th></th>
+                <th>ID</th>
+                <th>Model</th>
+                <th>Make</th>
+                <th>Price</th>
+              </tr>
+            </thead>
+            <tbody id="car-table-body"></tbody>
+          </table>
+        </div>
+
+        <!-- Delete or update options -->
+        <div class="delete-container">
+          <button onclick="deleteCars()" class="btn" id="delete-button">
+            Delete selected cars
+          </button>
+        </div>
+      </section>
+
+      <!-- Create new car -->
+
+      <section>
+        <p>Create a new car:</p>
+        <input
+          type="text"
+          id="get-make"
+          class="text-input"
+          placeholder="Make"
+        /><br />
+        <input
+          type="text"
+          id="get-model"
+          class="text-input"
+          placeholder="Model"
+        />
+        <br />
+        <input
+          type="text"
+          id="get-cost"
+          class="text-input"
+          placeholder="Price"
+        /><br />
+        <button class="btn" onclick="createCar()">Add Car</button>
+      </section>
+    </main>
+    <script src="script.js"></script>
+  </body>
+</html>
